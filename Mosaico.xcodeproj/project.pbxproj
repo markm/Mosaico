@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */; };
+		A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CF2BA0FEED004CBC46 /* Errors.swift */; };
+		A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72D12BA0FF08004CBC46 /* Constants.swift */; };
+		A07F72D52BA10056004CBC46 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A07F72D42BA10056004CBC46 /* Alamofire */; };
+		A07F72D82BA10284004CBC46 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A07F72D72BA10284004CBC46 /* AlamofireImage */; };
+		A07F72DA2BA1063C004CBC46 /* PuzzleBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72D92BA1063C004CBC46 /* PuzzleBoardViewModel.swift */; };
+		A07F72DE2BA107F6004CBC46 /* MockImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72DD2BA107F6004CBC46 /* MockImageService.swift */; };
+		A07F72E12BA10A50004CBC46 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = A07F72E02BA10A50004CBC46 /* AlertToast */; };
+		A07F72E32BA10D35004CBC46 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72E22BA10D35004CBC46 /* AppFonts.swift */; };
 		A0EFB5122BA0EBA7008C9572 /* MosaicoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5112BA0EBA7008C9572 /* MosaicoApp.swift */; };
-		A0EFB5142BA0EBA7008C9572 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5132BA0EBA7008C9572 /* ContentView.swift */; };
-		A0EFB5162BA0EBA7008C9572 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5152BA0EBA7008C9572 /* Item.swift */; };
+		A0EFB5142BA0EBA7008C9572 /* PuzzleBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5132BA0EBA7008C9572 /* PuzzleBoard.swift */; };
+		A0EFB5162BA0EBA7008C9572 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5152BA0EBA7008C9572 /* GameStats.swift */; };
 		A0EFB5182BA0EBA8008C9572 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0EFB5172BA0EBA8008C9572 /* Assets.xcassets */; };
 		A0EFB51C2BA0EBA8008C9572 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0EFB51B2BA0EBA8008C9572 /* Preview Assets.xcassets */; };
 		A0EFB5262BA0EBA8008C9572 /* MosaicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5252BA0EBA8008C9572 /* MosaicoTests.swift */; };
 		A0EFB5302BA0EBA8008C9572 /* MosaicoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB52F2BA0EBA8008C9572 /* MosaicoUITests.swift */; };
 		A0EFB5322BA0EBA8008C9572 /* MosaicoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5312BA0EBA8008C9572 /* MosaicoUITestsLaunchTests.swift */; };
+		A0EFB5402BA0ECFE008C9572 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB53F2BA0ECFE008C9572 /* Endpoint.swift */; };
+		A0EFB5472BA0FB28008C9572 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFB5462BA0FB28008C9572 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		A07F72CF2BA0FEED004CBC46 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		A07F72D12BA0FF08004CBC46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A07F72D92BA1063C004CBC46 /* PuzzleBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleBoardViewModel.swift; sourceTree = "<group>"; };
+		A07F72DD2BA107F6004CBC46 /* MockImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageService.swift; sourceTree = "<group>"; };
+		A07F72E22BA10D35004CBC46 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		A0EFB50E2BA0EBA7008C9572 /* Mosaico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EFB5112BA0EBA7008C9572 /* MosaicoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicoApp.swift; sourceTree = "<group>"; };
-		A0EFB5132BA0EBA7008C9572 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A0EFB5152BA0EBA7008C9572 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A0EFB5132BA0EBA7008C9572 /* PuzzleBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleBoard.swift; sourceTree = "<group>"; };
+		A0EFB5152BA0EBA7008C9572 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		A0EFB5172BA0EBA8008C9572 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0EFB5192BA0EBA8008C9572 /* Mosaico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mosaico.entitlements; sourceTree = "<group>"; };
 		A0EFB51B2BA0EBA8008C9572 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -47,6 +64,8 @@
 		A0EFB52B2BA0EBA8008C9572 /* MosaicoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EFB52F2BA0EBA8008C9572 /* MosaicoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicoUITests.swift; sourceTree = "<group>"; };
 		A0EFB5312BA0EBA8008C9572 /* MosaicoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A0EFB53F2BA0ECFE008C9572 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		A0EFB5462BA0FB28008C9572 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07F72E12BA10A50004CBC46 /* AlertToast in Frameworks */,
+				A07F72D52BA10056004CBC46 /* Alamofire in Frameworks */,
+				A07F72D82BA10284004CBC46 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A07F72DB2BA107A4004CBC46 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A07F72D92BA1063C004CBC46 /* PuzzleBoardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A07F72DC2BA107CC004CBC46 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A07F72DD2BA107F6004CBC46 /* MockImageService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		A0EFB5052BA0EBA7008C9572 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +135,12 @@
 		A0EFB5102BA0EBA7008C9572 /* Mosaico */ = {
 			isa = PBXGroup;
 			children = (
-				A0EFB5112BA0EBA7008C9572 /* MosaicoApp.swift */,
-				A0EFB5132BA0EBA7008C9572 /* ContentView.swift */,
-				A0EFB5152BA0EBA7008C9572 /* Item.swift */,
+				A07F72DB2BA107A4004CBC46 /* ViewModels */,
+				A0EFB5422BA0ED22008C9572 /* Views */,
+				A0EFB5412BA0ED0C008C9572 /* Models */,
+				A0EFB53E2BA0ECF0008C9572 /* Networking */,
+				A0EFB5432BA0ED2E008C9572 /* App */,
+				A07F72DC2BA107CC004CBC46 /* Mocks */,
 				A0EFB5172BA0EBA8008C9572 /* Assets.xcassets */,
 				A0EFB5192BA0EBA8008C9572 /* Mosaico.entitlements */,
 				A0EFB51A2BA0EBA8008C9572 /* Preview Content */,
@@ -132,6 +173,43 @@
 			path = MosaicoUITests;
 			sourceTree = "<group>";
 		};
+		A0EFB53E2BA0ECF0008C9572 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A0EFB53F2BA0ECFE008C9572 /* Endpoint.swift */,
+				A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A0EFB5412BA0ED0C008C9572 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0EFB5152BA0EBA7008C9572 /* GameStats.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0EFB5422BA0ED22008C9572 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0EFB5132BA0EBA7008C9572 /* PuzzleBoard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0EFB5432BA0ED2E008C9572 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A0EFB5112BA0EBA7008C9572 /* MosaicoApp.swift */,
+				A0EFB5462BA0FB28008C9572 /* Protocols.swift */,
+				A07F72CF2BA0FEED004CBC46 /* Errors.swift */,
+				A07F72D12BA0FF08004CBC46 /* Constants.swift */,
+				A07F72E22BA10D35004CBC46 /* AppFonts.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,6 +226,11 @@
 			dependencies = (
 			);
 			name = Mosaico;
+			packageProductDependencies = (
+				A07F72D42BA10056004CBC46 /* Alamofire */,
+				A07F72D72BA10284004CBC46 /* AlamofireImage */,
+				A07F72E02BA10A50004CBC46 /* AlertToast */,
+			);
 			productName = Mosaico;
 			productReference = A0EFB50E2BA0EBA7008C9572 /* Mosaico.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +303,11 @@
 				Base,
 			);
 			mainGroup = A0EFB5052BA0EBA7008C9572;
+			packageReferences = (
+				A07F72D32BA10055004CBC46 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A07F72D62BA10284004CBC46 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				A07F72DF2BA10A50004CBC46 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = A0EFB50F2BA0EBA7008C9572 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,9 +350,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0EFB5142BA0EBA7008C9572 /* ContentView.swift in Sources */,
-				A0EFB5162BA0EBA7008C9572 /* Item.swift in Sources */,
+				A0EFB5142BA0EBA7008C9572 /* PuzzleBoard.swift in Sources */,
+				A0EFB5162BA0EBA7008C9572 /* GameStats.swift in Sources */,
+				A0EFB5472BA0FB28008C9572 /* Protocols.swift in Sources */,
+				A0EFB5402BA0ECFE008C9572 /* Endpoint.swift in Sources */,
 				A0EFB5122BA0EBA7008C9572 /* MosaicoApp.swift in Sources */,
+				A07F72E32BA10D35004CBC46 /* AppFonts.swift in Sources */,
+				A07F72DA2BA1063C004CBC46 /* PuzzleBoardViewModel.swift in Sources */,
+				A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */,
+				A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */,
+				A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */,
+				A07F72DE2BA107F6004CBC46 /* MockImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +717,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A07F72D32BA10055004CBC46 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		A07F72D62BA10284004CBC46 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
+		A07F72DF2BA10A50004CBC46 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A07F72D42BA10056004CBC46 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A07F72D32BA10055004CBC46 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A07F72D72BA10284004CBC46 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A07F72D62BA10284004CBC46 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		A07F72E02BA10A50004CBC46 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A07F72DF2BA10A50004CBC46 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0EFB5062BA0EBA7008C9572 /* Project object */;
 }
