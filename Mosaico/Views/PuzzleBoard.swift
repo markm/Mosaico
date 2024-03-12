@@ -8,10 +8,12 @@
 import SwiftUI
 import SwiftData
 import AlertToast
+import UniformTypeIdentifiers
 
 struct PuzzleBoard: View {
     
     @State var viewModel: PuzzleBoardViewModel
+    @State private var imageDragging: UIImage?
     
     @Environment(\.modelContext) private var modelContext
     @Query private var stats: [GameStats]
@@ -25,12 +27,15 @@ struct PuzzleBoard: View {
 
     var body: some View {
         VStack {
-            if let image = viewModel.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                ProgressView()
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 0) {
+                ForEach(viewModel.tileImages, id: \.self) { image in
+                    PuzzleTile(image: Image(uiImage: image))
+                        .onDrag {
+                            self.imageDragging = image
+                            return NSItemProvider(object: image)
+                        }
+                        .onDrop(of: [UTType.text], delegate: viewModel)
+                }
             }
             
             if let stats = stats.first {
