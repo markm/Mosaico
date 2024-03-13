@@ -8,11 +8,21 @@
 import Foundation
 import SwiftUI
 
-struct DragPieceDelegate: DropDelegate {
+class DragPieceDelegate: DropDelegate {
     
-    let piece: PuzzlePiece
+    var piece: PuzzlePiece
     @Binding var pieces: [PuzzlePiece]
     @Binding var current: PuzzlePiece?
+    
+    // MARK: - Initializer
+    
+    init(piece: PuzzlePiece, pieces: Binding<[PuzzlePiece]>, current: Binding<PuzzlePiece?>) {
+        self.piece = piece
+        self._pieces = pieces
+        self._current = current
+    }
+    
+    // MARK: - DropDelegate
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
         return DropProposal(operation: .move)
@@ -22,6 +32,14 @@ struct DragPieceDelegate: DropDelegate {
         if piece != current {
             let from = pieces.firstIndex(of: current!)!
             let to = pieces.firstIndex(of: piece)!
+            
+            guard current?.isHome == false else {
+                return false
+            }
+            
+            current?.currentIndex = to
+            self.piece.currentIndex = from
+            
             withAnimation {
                 pieces.swapAt(from, to)
                 self.current = nil

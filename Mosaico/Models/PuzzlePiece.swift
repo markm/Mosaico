@@ -11,14 +11,24 @@ import UIKit
 struct PuzzlePiece {
     
     var id = UUID()
-    var image: UIImage
     var originalIndex: Int
     var currentIndex: Int
+    var image: UIImage
 
+    var isHome: Bool {
+        currentIndex == originalIndex
+    }
+    
     init(image: UIImage, index: Int) {
         self.image = image
+        self.currentIndex = index
         self.originalIndex = index
-        self.currentIndex = index 
+    }
+    
+    func setCurrentIndex(_ index: Int) -> PuzzlePiece {
+        var piece = self
+        piece.currentIndex = index
+        return piece
     }
 }
 

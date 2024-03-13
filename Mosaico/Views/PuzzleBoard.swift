@@ -26,28 +26,27 @@ struct PuzzleBoard: View {
 
     var body: some View {
         ZStack {
-            Color.mBlue
-                .edgesIgnoringSafeArea(.all)
+            Color.mBlue.edgesIgnoringSafeArea(.all)
             VStack {
                 Text("Mosaico")
                     .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
                     .foregroundColor(.white)
                     .padding(.top, kLargePadding)
                 
-                if viewModel.pieces.isEmpty {
+                if viewModel.currentPieces.isEmpty {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .padding(.top, kLargePadding)
                 } else {
                     LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
-                        ForEach(viewModel.pieces) { piece in
+                        ForEach(viewModel.currentPieces) { piece in
                             PuzzleTile(piece: piece)
                                 .onDrag {
                                     self.viewModel.pieceDragging = piece
                                     return NSItemProvider()
                                 }
                                 .onDrop(of: [.text], delegate: DragPieceDelegate(piece: piece, 
-                                                                                 pieces: $viewModel.pieces,
+                                                                                 pieces: $viewModel.currentPieces,
                                                                                  current: $viewModel.pieceDragging))
                         }
                     }
@@ -73,13 +72,18 @@ struct PuzzleBoard: View {
             }
         }
         .task {
-            if stats.isEmpty {
-                createGameStats()
-            }
             do {
                 try await viewModel.fetchImage()
             } catch {
                 self.error = error as? LocalizedError
+            }
+        }
+        .onAppear {
+            if stats.isEmpty {
+                createGameStats()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                viewModel.shuffle()
             }
         }
         .toast(isPresenting: $showingError) {

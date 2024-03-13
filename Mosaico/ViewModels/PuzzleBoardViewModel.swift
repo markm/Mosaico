@@ -18,7 +18,9 @@ class PuzzleBoardViewModel {
     var pieceDragging: PuzzlePiece?
     
     var gridSpacing = kGridSpacing
-    var pieces: [PuzzlePiece] = []
+    
+    var currentPieces: [PuzzlePiece] = []
+    var originalPieces: [PuzzlePiece] = []
     
     var layout: [GridItem] {
         [
@@ -44,6 +46,14 @@ class PuzzleBoardViewModel {
         }
     }
     
+    func shuffle() {
+        let shuffled = originalPieces.shuffled()
+        withAnimation {
+            /// Updates the current index of each piece to the new shuffled indices and updates the current pieces
+            currentPieces = shuffled.enumerated().map { (index, piece) in piece.setCurrentIndex(index) }
+        }
+    }
+    
     private func splitImage(into gridSize: Int) {
         guard let image = self.image else {
             return
@@ -61,8 +71,10 @@ class PuzzleBoardViewModel {
                 }
             }
         }
+        let pieces = images.enumerated().map { (index, image) in PuzzlePiece(image: image, index: index) }
         withAnimation {
-            self.pieces = images.enumerated().map { (index, image) in PuzzlePiece(image: image, index: index) }
+            originalPieces = pieces
+            currentPieces = pieces
         }
     }
 }
