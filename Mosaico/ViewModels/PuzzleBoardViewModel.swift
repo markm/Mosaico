@@ -15,10 +15,18 @@ class PuzzleBoardViewModel {
     var imageService: ImageServiceProtocol
     
     var image: UIImage?
-    var draggedIndex: Int?
+    var pieceDragging: PuzzlePiece?
     
-    let index: Int = 0
-    var tileImages: [UIImage] = []
+    var gridSpacing = kGridSpacing
+    var pieces: [PuzzlePiece] = []
+    
+    var layout: [GridItem] {
+        [
+            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
+            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
+            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
+        ]
+    }
     
     init(imageService: ImageServiceProtocol) {
         self.imageService = imageService
@@ -54,18 +62,7 @@ class PuzzleBoardViewModel {
             }
         }
         withAnimation {
-            self.tileImages = images
+            self.pieces = images.enumerated().map { (index, image) in PuzzlePiece(image: image, index: index) }
         }
-    }
-}
-
-extension PuzzleBoardViewModel: DropDelegate {
-    
-    func performDrop(info: DropInfo) -> Bool {
-        guard let draggedIndex = draggedIndex else { return false }
-        
-        /// Swap the images in the tiles array
-        tileImages.swapAt(draggedIndex, index)
-        return true
     }
 }

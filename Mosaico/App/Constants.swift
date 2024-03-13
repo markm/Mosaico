@@ -19,6 +19,9 @@ let kSmallPadding: CGFloat = 8
 let kLargePadding: CGFloat = 24
 let kMediumPadding: CGFloat = 16
 
+// Spacing
+let kGridSpacing: CGFloat = 5
+
 // Radii
 let kShadowRadius: CGFloat = 5
 let kPuzzleBoardCornerRadius: CGFloat = 25
@@ -36,4 +39,6 @@ let kResetTitle = "Reset"
 let kMosaicoTitle = "Mosaico"
 let kDefaultRecoverySuggestion = "Try again, or contact help@mosaico.com"
 let kInitNotImplementedErrorMessage = "init(coder:) has not been implemented"
+
+public typealias Reorderable = Identifiable & Equatable
 

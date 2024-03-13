@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 struct PuzzleTile: View {
-    var image: Image
+    var piece: PuzzlePiece
     var body: some View {
-        image
+        Image(uiImage: piece.image)
             .resizable()
             .aspectRatio(contentMode: .fit)
     }
 }
 
 #Preview {
-    PuzzleTile(image: Image(systemName: "mosaic"))
+    PuzzleTile(piece: PuzzlePiece(image: UIImage(systemName: "mosiac")!, index: 0))
 }

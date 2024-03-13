@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A06A782A2BA149ED009F1DE1 /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */; };
+		A06A782C2BA152AA009F1DE1 /* DragPieceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */; };
 		A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */; };
 		A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CF2BA0FEED004CBC46 /* Errors.swift */; };
 		A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72D12BA0FF08004CBC46 /* Constants.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
+		A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPieceDelegate.swift; sourceTree = "<group>"; };
 		A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		A07F72CF2BA0FEED004CBC46 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A07F72D12BA0FF08004CBC46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EFB5152BA0EBA7008C9572 /* GameStats.swift */,
+				A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				A07F72CF2BA0FEED004CBC46 /* Errors.swift */,
 				A07F72D12BA0FF08004CBC46 /* Constants.swift */,
 				A07F72E22BA10D35004CBC46 /* AppFonts.swift */,
+				A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -355,6 +361,8 @@
 			files = (
 				A0EFB5142BA0EBA7008C9572 /* PuzzleBoard.swift in Sources */,
 				A0EFB5162BA0EBA7008C9572 /* GameStats.swift in Sources */,
+				A06A782A2BA149ED009F1DE1 /* PuzzlePiece.swift in Sources */,
+				A06A782C2BA152AA009F1DE1 /* DragPieceDelegate.swift in Sources */,
 				A0EFB5472BA0FB28008C9572 /* Protocols.swift in Sources */,
 				A07F72E52BA11139004CBC46 /* PuzzleTile.swift in Sources */,
 				A0EFB5402BA0ECFE008C9572 /* Endpoint.swift in Sources */,

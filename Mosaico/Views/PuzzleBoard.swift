@@ -13,7 +13,6 @@ import UniformTypeIdentifiers
 struct PuzzleBoard: View {
     
     @State var viewModel: PuzzleBoardViewModel
-    @State private var imageDragging: UIImage?
     
     @Environment(\.modelContext) private var modelContext
     @Query private var stats: [GameStats]
@@ -26,20 +25,51 @@ struct PuzzleBoard: View {
     }
 
     var body: some View {
-        VStack {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 0) {
-                ForEach(viewModel.tileImages, id: \.self) { image in
-                    PuzzleTile(image: Image(uiImage: image))
-                        .onDrag {
-                            self.imageDragging = image
-                            return NSItemProvider(object: image)
+        ZStack {
+            Color.mBlue
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Mosaico")
+                    .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
+                    .foregroundColor(.white)
+                    .padding(.top, kLargePadding)
+                
+                if viewModel.pieces.isEmpty {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .padding(.top, kLargePadding)
+                } else {
+                    LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
+                        ForEach(viewModel.pieces) { piece in
+                            PuzzleTile(piece: piece)
+                                .onDrag {
+                                    self.viewModel.pieceDragging = piece
+                                    return NSItemProvider()
+                                }
+                                .onDrop(of: [.text], delegate: DragPieceDelegate(piece: piece, 
+                                                                                 pieces: $viewModel.pieces,
+                                                                                 current: $viewModel.pieceDragging))
                         }
-                        .onDrop(of: [UTType.text], delegate: viewModel)
+                    }
+                    .cornerRadius(kPuzzleBoardCornerRadius)
                 }
-            }
-            
-            if let stats = stats.first {
-                Text("Score \(stats.score)")
+                
+                Spacer()
+                
+                if let stats = stats.first {
+                    Text("Score \(stats.score)")
+                        .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
+                        .foregroundColor(.white)
+                }
+                
+                Button {
+                    withAnimation {
+                        viewModel.gridSpacing = 0
+                    }
+                } label: {
+                    Text("finish")
+                }
+                .padding()
             }
         }
         .task {
@@ -74,3 +104,5 @@ struct PuzzleBoard: View {
     PuzzleBoard(viewModel: PuzzleBoardViewModel(imageService: MockImageService()))
         .modelContainer(for: GameStats.self, inMemory: true)
 }
+
+

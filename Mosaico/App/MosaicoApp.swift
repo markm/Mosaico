@@ -30,3 +30,4 @@ struct MosaicoApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
