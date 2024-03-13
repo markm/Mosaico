@@ -17,6 +17,6 @@ struct StartOverButtonStyle: ButtonStyle {
             .background(Color.mGreen)
             .foregroundStyle(.white)
             .clipShape(Capsule())
-            .font(AppFonts.helveticaNeue(ofSize: kRegularFontSize))
+            .font(AppFonts.optima(ofSize: kRegularFontSize))
     }
 }

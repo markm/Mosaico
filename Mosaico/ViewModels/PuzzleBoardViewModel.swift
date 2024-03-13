@@ -62,6 +62,7 @@ class PuzzleBoardViewModel {
                 try? await fetchImage()
                 withAnimation {
                     isComplete = false
+                    gridSpacing = kGridSpacing
                 }
             }
         }

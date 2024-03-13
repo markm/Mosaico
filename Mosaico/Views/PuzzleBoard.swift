@@ -30,7 +30,7 @@ struct PuzzleBoard: View {
                 Color.mBlue.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text(kMosaicoTitle)
-                        .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
+                        .font(AppFonts.optima(ofSize: kTitleFontSize))
                         .foregroundColor(.white)
                         .padding(.top, kLargePadding)
                     
@@ -63,7 +63,7 @@ struct PuzzleBoard: View {
                     
                     if let stats = stats.first {
                         Text("Score \(stats.score)")
-                            .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
+                            .font(AppFonts.optima(ofSize: kMediumFontSize))
                             .foregroundColor(.white)
                     }
                     
@@ -95,7 +95,7 @@ struct PuzzleBoard: View {
                        title: error?.failureReason ?? "Action Failed",
                        style: .style(backgroundColor: Color.mRed,
                                      titleColor: .white,
-                                     titleFont: AppFonts.helveticaNeue(ofSize: kMediumFontSize)))
+                                     titleFont: AppFonts.optima(ofSize: kMediumFontSize)))
         }
     }
 

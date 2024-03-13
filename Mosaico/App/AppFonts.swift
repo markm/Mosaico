@@ -17,6 +17,15 @@ struct AppFonts {
             return Font.custom("HelveticaNeue-Bold", size: size)
         }
     }
+    
+    static func optima(ofSize size: CGFloat, weight: FontWeight = .regular) -> Font {
+        switch weight {
+        case .regular:
+            return Font.custom("Optima-Regular", size: size)
+        case .bold:
+            return Font.custom("Optima-Bold", size: size)
+        }
+    }
 }
 
 enum FontWeight {
