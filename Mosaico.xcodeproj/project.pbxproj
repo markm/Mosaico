@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A06A782A2BA149ED009F1DE1 /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */; };
 		A06A782C2BA152AA009F1DE1 /* DragPieceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */; };
+		A06A782E2BA170DA009F1DE1 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */; };
 		A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */; };
 		A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CF2BA0FEED004CBC46 /* Errors.swift */; };
 		A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72D12BA0FF08004CBC46 /* Constants.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 		A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPieceDelegate.swift; sourceTree = "<group>"; };
+		A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		A07F72CF2BA0FEED004CBC46 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A07F72D12BA0FF08004CBC46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				A07F72D12BA0FF08004CBC46 /* Constants.swift */,
 				A07F72E22BA10D35004CBC46 /* AppFonts.swift */,
 				A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */,
+				A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */,
 				A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */,
 				A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */,
+				A06A782E2BA170DA009F1DE1 /* ButtonStyles.swift in Sources */,
 				A07F72DE2BA107F6004CBC46 /* MockImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +540,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mosaico;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -546,7 +552,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -574,6 +580,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mosaico;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -584,7 +592,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
