@@ -25,51 +25,55 @@ struct PuzzleBoard: View {
     }
 
     var body: some View {
-        ZStack {
-            Color.mBlue.edgesIgnoringSafeArea(.all)
-            VStack {
-                Text(kMosaicoTitle)
-                    .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
-                    .foregroundColor(.white)
-                    .padding(.top, kLargePadding)
-                
-                if viewModel.currentPieces.isEmpty {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .padding(.top, kLargePadding)
-                } else {
-                    LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
-                        ForEach(viewModel.currentPieces) { piece in
-                            PuzzleTile(piece: piece)
-                                .onDrag {
-                                    self.viewModel.pieceDragging = piece
-                                    return NSItemProvider()
-                                }
-                                .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
-                                                                                 pieces: $viewModel.currentPieces,
-                                                                                 gridSpacing: $viewModel.gridSpacing, 
-                                                                                 isComplete: $viewModel.isComplete,
-                                                                                 currentPiece: $viewModel.pieceDragging))
-                        }
-                    }
-                    .cornerRadius(kPuzzleBoardCornerRadius)
-                    .padding()
-                }
-                
-                Spacer()
-                
-                if let stats = stats.first {
-                    Text("Score \(stats.score)")
-                        .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
+        GeometryReader { geometry in
+            ZStack {
+                Color.mBlue.edgesIgnoringSafeArea(.all)
+                VStack {
+                    Text(kMosaicoTitle)
+                        .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
                         .foregroundColor(.white)
-                }
-                
-                if viewModel.isComplete {
-                    Button(kNewGameButtonTitle) {
-                        viewModel.startOver()
+                        .padding(.top, kLargePadding)
+                    
+                    if viewModel.currentPieces.isEmpty {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .padding(.top, kLargePadding)
+                    } else {
+                        LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
+                            ForEach(viewModel.currentPieces) { piece in
+                                PuzzleTile(piece: piece)
+                                    .onDrag {
+                                        self.viewModel.pieceDragging = piece
+                                        return NSItemProvider()
+                                    }
+                                    .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
+                                                                                     pieces: $viewModel.currentPieces,
+                                                                                     gridSpacing: $viewModel.gridSpacing,
+                                                                                     isComplete: $viewModel.isComplete,
+                                                                                     currentPiece: $viewModel.pieceDragging))
+                            }
+                        }
+                        .cornerRadius(kPuzzleBoardCornerRadius)
+                        .padding()
+                        .frame(width: geometry.size.width,
+                               height: geometry.size.width)
                     }
-                    .buttonStyle(StartOverButtonStyle())
-                    .padding(.bottom, kLargePadding)
+                    
+                    Spacer()
+                    
+                    if let stats = stats.first {
+                        Text("Score \(stats.score)")
+                            .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
+                            .foregroundColor(.white)
+                    }
+                    
+                    if viewModel.isComplete {
+                        Button(kNewGameButtonTitle) {
+                            viewModel.startOver()
+                        }
+                        .buttonStyle(StartOverButtonStyle())
+                        .padding(.bottom, kLargePadding)
+                    }
                 }
             }
         }
