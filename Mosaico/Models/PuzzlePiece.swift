@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PuzzlePiece {
+class PuzzlePiece {
     
     var id = UUID()
     var originalIndex: Int
@@ -26,9 +26,8 @@ struct PuzzlePiece {
     }
     
     func setCurrentIndex(_ index: Int) -> PuzzlePiece {
-        var piece = self
-        piece.currentIndex = index
-        return piece
+        currentIndex = index
+        return self
     }
 }
 

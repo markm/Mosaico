@@ -20,7 +20,7 @@ let kLargePadding: CGFloat = 24
 let kMediumPadding: CGFloat = 16
 
 // Spacing
-let kGridSpacing: CGFloat = 5
+let kGridSpacing: CGFloat = 3
 
 // Radii
 let kShadowRadius: CGFloat = 5
@@ -32,13 +32,19 @@ let kBorderWidth: CGFloat = 1
 let kTitleHeight: CGFloat = 60
 let kShadowHeight: CGFloat = 5
 let kShadowOpacity: Float = 0.5
+let kMinGridItemSize: CGFloat = 40
 
 // Misc Strings
 let kDoneTitle = "Done"
 let kResetTitle = "Reset"
 let kMosaicoTitle = "Mosaico"
+let kNewGameButtonTitle = "New Game"
 let kDefaultRecoverySuggestion = "Try again, or contact help@mosaico.com"
 let kInitNotImplementedErrorMessage = "init(coder:) has not been implemented"
 
+// Misc
+let kSecondsBeforeShuffle = 3.0
+
+// Typealiases
 public typealias Reorderable = Identifiable & Equatable
 

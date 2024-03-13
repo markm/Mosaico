@@ -28,7 +28,7 @@ struct PuzzleBoard: View {
         ZStack {
             Color.mBlue.edgesIgnoringSafeArea(.all)
             VStack {
-                Text("Mosaico")
+                Text(kMosaicoTitle)
                     .font(AppFonts.helveticaNeue(ofSize: kTitleFontSize))
                     .foregroundColor(.white)
                     .padding(.top, kLargePadding)
@@ -45,12 +45,15 @@ struct PuzzleBoard: View {
                                     self.viewModel.pieceDragging = piece
                                     return NSItemProvider()
                                 }
-                                .onDrop(of: [.text], delegate: DragPieceDelegate(piece: piece, 
+                                .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
                                                                                  pieces: $viewModel.currentPieces,
-                                                                                 current: $viewModel.pieceDragging))
+                                                                                 gridSpacing: $viewModel.gridSpacing, 
+                                                                                 isComplete: $viewModel.isComplete,
+                                                                                 currentPiece: $viewModel.pieceDragging))
                         }
                     }
                     .cornerRadius(kPuzzleBoardCornerRadius)
+                    .padding()
                 }
                 
                 Spacer()
@@ -61,14 +64,13 @@ struct PuzzleBoard: View {
                         .foregroundColor(.white)
                 }
                 
-                Button {
-                    withAnimation {
-                        viewModel.gridSpacing = 0
+                if viewModel.isComplete {
+                    Button(kNewGameButtonTitle) {
+                        viewModel.startOver()
                     }
-                } label: {
-                    Text("finish")
+                    .buttonStyle(StartOverButtonStyle())
+                    .padding(.bottom, kLargePadding)
                 }
-                .padding()
             }
         }
         .task {
@@ -81,9 +83,6 @@ struct PuzzleBoard: View {
         .onAppear {
             if stats.isEmpty {
                 createGameStats()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                viewModel.shuffle()
             }
         }
         .toast(isPresenting: $showingError) {

@@ -19,14 +19,15 @@ class PuzzleBoardViewModel {
     
     var gridSpacing = kGridSpacing
     
+    var isComplete: Bool = false
     var currentPieces: [PuzzlePiece] = []
     var originalPieces: [PuzzlePiece] = []
     
     var layout: [GridItem] {
         [
-            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
-            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
-            GridItem(.flexible(minimum: 40), spacing: gridSpacing),
+            GridItem(.flexible(minimum: kMinGridItemSize), spacing: gridSpacing),
+            GridItem(.flexible(minimum: kMinGridItemSize), spacing: gridSpacing),
+            GridItem(.flexible(minimum: kMinGridItemSize), spacing: gridSpacing),
         ]
     }
     
@@ -54,6 +55,18 @@ class PuzzleBoardViewModel {
         }
     }
     
+    @MainActor
+    func startOver() {
+        Task {
+            do {
+                try? await fetchImage()
+                withAnimation {
+                    isComplete = false
+                }
+            }
+        }
+    }
+    
     private func splitImage(into gridSize: Int) {
         guard let image = self.image else {
             return
@@ -75,6 +88,9 @@ class PuzzleBoardViewModel {
         withAnimation {
             originalPieces = pieces
             currentPieces = pieces
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + kSecondsBeforeShuffle) {
+            self.shuffle()
         }
     }
 }

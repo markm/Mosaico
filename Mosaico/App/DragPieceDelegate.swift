@@ -10,16 +10,25 @@ import SwiftUI
 
 class DragPieceDelegate: DropDelegate {
     
-    var piece: PuzzlePiece
+    var originalPiece: PuzzlePiece
+    
+    @Binding var isComplete: Bool
+    @Binding var gridSpacing: CGFloat
     @Binding var pieces: [PuzzlePiece]
-    @Binding var current: PuzzlePiece?
+    @Binding var currentPiece: PuzzlePiece?
     
     // MARK: - Initializer
     
-    init(piece: PuzzlePiece, pieces: Binding<[PuzzlePiece]>, current: Binding<PuzzlePiece?>) {
-        self.piece = piece
+    init(originalPiece: PuzzlePiece,
+         pieces: Binding<[PuzzlePiece]>,
+         gridSpacing: Binding<CGFloat>,
+         isComplete: Binding<Bool>,
+         currentPiece: Binding<PuzzlePiece?>) {
+        self.originalPiece = originalPiece
         self._pieces = pieces
-        self._current = current
+        self._isComplete = isComplete
+        self._currentPiece = currentPiece
+        self._gridSpacing = gridSpacing
     }
     
     // MARK: - DropDelegate
@@ -29,20 +38,31 @@ class DragPieceDelegate: DropDelegate {
     }
     
     func performDrop(info: DropInfo) -> Bool {
-        if piece != current {
-            let from = pieces.firstIndex(of: current!)!
-            let to = pieces.firstIndex(of: piece)!
+        if originalPiece != currentPiece {
+            let from = pieces.firstIndex(of: currentPiece!)!
+            let to = pieces.firstIndex(of: originalPiece)!
             
-            guard current?.isHome == false else {
+            print("Current is home: \(currentPiece?.isHome == true)")
+            
+            guard currentPiece?.isHome == false else {
                 return false
             }
             
-            current?.currentIndex = to
-            self.piece.currentIndex = from
+            currentPiece?.currentIndex = to
+            self.originalPiece.currentIndex = from
             
             withAnimation {
                 pieces.swapAt(from, to)
-                self.current = nil
+                self.currentPiece = nil
+            }
+            
+            let done = pieces.allSatisfy { $0.isHome }
+            if done {
+                print("Puzzle is complete")
+                withAnimation {
+                    gridSpacing = 0
+                    isComplete = true
+                }
             }
         }
         return true
