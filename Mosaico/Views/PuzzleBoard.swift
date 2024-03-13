@@ -77,7 +77,7 @@ struct PuzzleBoard: View {
                             Progress
                         } else {
                             Grid
-                                .padding(.top, kLargePadding)
+                                .padding()
                         }
                     }
                 }

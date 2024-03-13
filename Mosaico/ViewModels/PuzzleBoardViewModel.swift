@@ -60,6 +60,7 @@ class PuzzleBoardViewModel {
         }
     }
     
+    @MainActor
     func startOver() {
         Task {
             do {

@@ -53,6 +53,7 @@
 		A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 		A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPieceDelegate.swift; sourceTree = "<group>"; };
 		A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		A06A782F2BA25822009F1DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		A07F72CF2BA0FEED004CBC46 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A07F72D12BA0FF08004CBC46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		A0EFB5102BA0EBA7008C9572 /* Mosaico */ = {
 			isa = PBXGroup;
 			children = (
+				A06A782F2BA25822009F1DE1 /* Info.plist */,
 				A07F72DB2BA107A4004CBC46 /* ViewModels */,
 				A0EFB5422BA0ED22008C9572 /* Views */,
 				A0EFB5412BA0ED0C008C9572 /* Models */,
@@ -540,6 +542,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mosaico/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Mosaico;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -580,6 +583,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mosaico/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Mosaico;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
