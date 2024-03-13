@@ -39,6 +39,8 @@ let kDoneTitle = "Done"
 let kResetTitle = "Reset"
 let kMosaicoTitle = "Mosaico"
 let kNewGameButtonTitle = "Start Over"
+let kCompletedPuzzleMessage = "Puzzle Complete!"
+let kPuzzleDirections = "Drag the pieces to their correct positions"
 let kDefaultRecoverySuggestion = "Try again, or contact help@mosaico.com"
 let kInitNotImplementedErrorMessage = "init(coder:) has not been implemented"
 
