@@ -81,12 +81,13 @@ struct PuzzleBoard: View {
                         }
                     }
                 }
-            } else {
+            } else {    /// If the size class is regular, show the puzzle in a vertical layout
                 VStack(spacing: 0) {
                     Text(kMosaicoTitle)
                         .font(AppFonts.optima(ofSize: kTitleFontSize))
                         .foregroundColor(.white)
-                        .padding(.vertical, kLargePadding)
+                        .padding(.top)
+                        .padding(.bottom, kSmallPadding)
                     
                     Text(kPuzzleDirections)
                         .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
