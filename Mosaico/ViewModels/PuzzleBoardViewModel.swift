@@ -31,17 +31,22 @@ class PuzzleBoardViewModel {
         ]
     }
     
+    // MARK: - Initializer
+    
     init(imageService: ImageServiceProtocol) {
         self.imageService = imageService
     }
     
+    // MARK: - Public
+    
+    @MainActor
     func fetchImage() async throws {
         guard let url = Endpoint.largeImage.url else {
             throw ImageError.invalidURL
         }
         do {
             self.image = try await imageService.fetchImage(fromURL: url)
-            self.splitImage(into: 3)
+            self.splitImage()
         } catch {
             throw ImageError.failedToLoadImage
         }
@@ -55,7 +60,6 @@ class PuzzleBoardViewModel {
         }
     }
     
-    @MainActor
     func startOver() {
         Task {
             do {
@@ -68,14 +72,16 @@ class PuzzleBoardViewModel {
         }
     }
     
-    private func splitImage(into gridSize: Int) {
+    // MARK: - Private
+    
+    private func splitImage() {
         guard let image = self.image else {
             return
         }
-        let size = CGSize(width: image.size.width / CGFloat(gridSize), height: image.size.height / CGFloat(gridSize))
+        let size = CGSize(width: image.size.width / CGFloat(kGridLength), height: image.size.height / CGFloat(kGridLength))
         var images: [UIImage] = []
-        for y in 0..<gridSize {
-            for x in 0..<gridSize {
+        for y in 0..<kGridLength {
+            for x in 0..<kGridLength {
                 UIGraphicsBeginImageContext(size)
                 image.draw(at: CGPoint(x: -CGFloat(x) * size.width, y: -CGFloat(y) * size.height))
                 let tileImage = UIGraphicsGetImageFromCurrentImageContext()

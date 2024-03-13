@@ -27,6 +27,7 @@ let kShadowRadius: CGFloat = 5
 let kDefaultCornerRadius: CGFloat = 16
 
 // Misc Dimensions
+let kGridLength = 3
 let kBorderWidth: CGFloat = 1
 let kTitleHeight: CGFloat = 60
 let kShadowHeight: CGFloat = 5

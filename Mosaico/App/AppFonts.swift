@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AppFonts {
     
-    static func helveticaNeue(ofSize size: CGFloat, weight: FontWeight = .regular) -> Font {
+    static func avenirNext(ofSize size: CGFloat, weight: FontWeight = .regular) -> Font {
         switch weight {
         case .regular:
-            return Font.custom("HelveticaNeue", size: size)
+            return Font.custom("AvenirNext-Regular", size: size)
         case .bold:
-            return Font.custom("HelveticaNeue-Bold", size: size)
+            return Font.custom("AvenirNext-Bold", size: size)
         }
     }
     

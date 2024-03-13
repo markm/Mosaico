@@ -16,6 +16,6 @@ struct VibrantButtonStyle: ButtonStyle {
             .background(Color.mGreen)
             .foregroundStyle(.white)
             .clipShape(Capsule())
-            .font(AppFonts.optima(ofSize: kRegularFontSize))
+            .font(AppFonts.avenirNext(ofSize: kRegularFontSize))
     }
 }

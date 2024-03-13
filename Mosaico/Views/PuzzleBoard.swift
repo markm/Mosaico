@@ -25,57 +25,65 @@ struct PuzzleBoard: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Color.mDarkBlue.edgesIgnoringSafeArea(.all)
-                VStack {
-                    Text(kMosaicoTitle)
-                        .font(AppFonts.optima(ofSize: kTitleFontSize))
-                        .foregroundColor(.white)
+        ZStack {
+            Color.mDarkBlue.edgesIgnoringSafeArea(.all)
+            VStack {
+                Text(kMosaicoTitle)
+                    .font(AppFonts.optima(ofSize: kTitleFontSize))
+                    .foregroundColor(.white)
+                    .padding(.top, kLargePadding)
+                
+                Text("arrange the tiles to complete the puzzle")
+                    .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
+                    .foregroundColor(.white)
+                
+                if viewModel.currentPieces.isEmpty {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .padding(.top, kLargePadding)
-                    
-                    Text("arrange the tiles to complete the puzzle")
-                        .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
-                        .foregroundColor(.white)
-                    
-                    if viewModel.currentPieces.isEmpty {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .padding(.top, kLargePadding)
-                    } else {
-                        LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
-                            ForEach(viewModel.currentPieces) { piece in
-                                PuzzleTile(piece: piece)
-                                    .onDrag {
-                                        self.viewModel.pieceDragging = piece
-                                        return NSItemProvider()
-                                    }
-                                    .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
-                                                                                     pieces: $viewModel.currentPieces,
-                                                                                     gridSpacing: $viewModel.gridSpacing,
-                                                                                     isComplete: $viewModel.isComplete,
-                                                                                     currentPiece: $viewModel.pieceDragging))
-                            }
+                } else {
+                    LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
+                        ForEach(viewModel.currentPieces) { piece in
+                            PuzzleTile(piece: piece)
+                                .onDrag {
+                                    self.viewModel.pieceDragging = piece
+                                    return NSItemProvider()
+                                }
+                                .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
+                                                                                 pieces: $viewModel.currentPieces,
+                                                                                 gridSpacing: $viewModel.gridSpacing,
+                                                                                 isComplete: $viewModel.isComplete,
+                                                                                 currentPiece: $viewModel.pieceDragging))
                         }
-                        .cornerRadius(kDefaultCornerRadius)
-                        .padding()
-                        .frame(width: geometry.size.width,
-                               height: geometry.size.width)
                     }
-                    
-                    Spacer()
-                    
-                    Button(kNewGameButtonTitle) {
-                        viewModel.startOver()
-                    }
-                    .buttonStyle(VibrantButtonStyle())
-                    
-                    if let stats = stats.first {
-                        Text("Completed Puzzles: \(stats.score)")
-                            .font(AppFonts.optima(ofSize: kMediumFontSize))
-                            .foregroundColor(.white)
-                            .padding(.top)
-                    }
+                    .background(.white)
+                    .cornerRadius(kDefaultCornerRadius)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: kDefaultCornerRadius)
+                            .stroke(.white, lineWidth: 2)
+                    )
+                    .padding()
+                }
+                
+                if viewModel.isComplete {
+                    Text("Puzzle Complete!")
+                        .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
+                        .foregroundColor(.white)
+                        .padding(.top)
+                }
+                
+                Spacer()
+                
+                Button(kNewGameButtonTitle) {
+                    viewModel.startOver()
+                }
+                .buttonStyle(VibrantButtonStyle())
+                
+                if let stats = stats.first {
+                    Text("Completed Puzzles: \(stats.score)")
+                        .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
+                        .foregroundColor(.white)
+                        .padding(.top)
                 }
             }
         }
@@ -91,13 +99,20 @@ struct PuzzleBoard: View {
                 createGameStats()
             }
         }
+        .onChange(of: viewModel.isComplete, { oldValue, newValue in
+            if newValue {
+                withAnimation {
+                    stats.first?.score += 1
+                }
+            }
+        })
         .toast(isPresenting: $showingError) {
             AlertToast(displayMode: .banner(.slide),
                        type: .error(.white),
                        title: error?.failureReason ?? "Action Failed",
                        style: .style(backgroundColor: Color.mRed,
                                      titleColor: .white,
-                                     titleFont: AppFonts.optima(ofSize: kMediumFontSize)))
+                                     titleFont: AppFonts.avenirNext(ofSize: kMediumFontSize)))
         }
     }
 
