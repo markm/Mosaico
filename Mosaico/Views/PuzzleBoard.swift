@@ -27,12 +27,16 @@ struct PuzzleBoard: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.mBlue.edgesIgnoringSafeArea(.all)
+                Color.mDarkBlue.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text(kMosaicoTitle)
                         .font(AppFonts.optima(ofSize: kTitleFontSize))
                         .foregroundColor(.white)
                         .padding(.top, kLargePadding)
+                    
+                    Text("arrange the tiles to complete the puzzle")
+                        .font(AppFonts.helveticaNeue(ofSize: kMediumFontSize))
+                        .foregroundColor(.white)
                     
                     if viewModel.currentPieces.isEmpty {
                         ProgressView()
@@ -53,7 +57,7 @@ struct PuzzleBoard: View {
                                                                                      currentPiece: $viewModel.pieceDragging))
                             }
                         }
-                        .cornerRadius(kPuzzleBoardCornerRadius)
+                        .cornerRadius(kDefaultCornerRadius)
                         .padding()
                         .frame(width: geometry.size.width,
                                height: geometry.size.width)
@@ -61,18 +65,16 @@ struct PuzzleBoard: View {
                     
                     Spacer()
                     
+                    Button(kNewGameButtonTitle) {
+                        viewModel.startOver()
+                    }
+                    .buttonStyle(VibrantButtonStyle())
+                    
                     if let stats = stats.first {
-                        Text("Score \(stats.score)")
+                        Text("Completed Puzzles: \(stats.score)")
                             .font(AppFonts.optima(ofSize: kMediumFontSize))
                             .foregroundColor(.white)
-                    }
-                    
-                    if viewModel.isComplete {
-                        Button(kNewGameButtonTitle) {
-                            viewModel.startOver()
-                        }
-                        .buttonStyle(StartOverButtonStyle())
-                        .padding(.bottom, kLargePadding)
+                            .padding(.top)
                     }
                 }
             }

@@ -42,8 +42,6 @@ class DragPieceDelegate: DropDelegate {
             let from = pieces.firstIndex(of: currentPiece!)!
             let to = pieces.firstIndex(of: originalPiece)!
             
-            print("Current is home: \(currentPiece?.isHome == true)")
-            
             guard currentPiece?.isHome == false else {
                 return false
             }

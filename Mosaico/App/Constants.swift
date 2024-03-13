@@ -8,7 +8,7 @@
 import Foundation
 
 // Fonts
-let kTitleFontSize: CGFloat = 26
+let kTitleFontSize: CGFloat = 38
 let kLargeFontSize: CGFloat = 24
 let kSmallFontSize: CGFloat = 14
 let kMediumFontSize: CGFloat = 18
@@ -24,7 +24,6 @@ let kGridSpacing: CGFloat = 3
 
 // Radii
 let kShadowRadius: CGFloat = 5
-let kPuzzleBoardCornerRadius: CGFloat = 25
 let kDefaultCornerRadius: CGFloat = 16
 
 // Misc Dimensions
@@ -38,12 +37,12 @@ let kMinGridItemSize: CGFloat = 40
 let kDoneTitle = "Done"
 let kResetTitle = "Reset"
 let kMosaicoTitle = "Mosaico"
-let kNewGameButtonTitle = "New Game"
+let kNewGameButtonTitle = "Start Over"
 let kDefaultRecoverySuggestion = "Try again, or contact help@mosaico.com"
 let kInitNotImplementedErrorMessage = "init(coder:) has not been implemented"
 
 // Misc
-let kSecondsBeforeShuffle = 3.0
+let kSecondsBeforeShuffle = 2.0
 
 // Typealiases
 public typealias Reorderable = Identifiable & Equatable

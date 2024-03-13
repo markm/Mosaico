@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct StartOverButtonStyle: ButtonStyle {
-    
+struct VibrantButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(.vertical, kMediumPadding)
