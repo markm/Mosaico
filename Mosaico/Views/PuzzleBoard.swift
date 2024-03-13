@@ -27,11 +27,11 @@ struct PuzzleBoard: View {
     var body: some View {
         ZStack {
             Color.mDarkBlue.edgesIgnoringSafeArea(.all)
-            VStack {
+            VStack(spacing: 0) {
                 Text(kMosaicoTitle)
                     .font(AppFonts.optima(ofSize: kTitleFontSize))
                     .foregroundColor(.white)
-                    .padding(.top, kLargePadding)
+                    .padding(.vertical, kLargePadding)
                 
                 Text("arrange the tiles to complete the puzzle")
                     .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
@@ -60,7 +60,7 @@ struct PuzzleBoard: View {
                     .cornerRadius(kDefaultCornerRadius)
                     .overlay(
                         RoundedRectangle(cornerRadius: kDefaultCornerRadius)
-                            .stroke(.white, lineWidth: 2)
+                            .stroke(.white, lineWidth: kGridSpacing)
                     )
                     .padding()
                 }
