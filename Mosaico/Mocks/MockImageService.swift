@@ -13,7 +13,7 @@ import AlamofireImage
 class MockImageService: ImageServiceProtocol {
     
     var image: UIImage?
-    var error: Error?
+    var error: ImageError?
     
     func fetchImage(fromURL url: URL) async throws -> UIImage {
         if let error = error {

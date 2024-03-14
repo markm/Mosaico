@@ -46,17 +46,9 @@ class PuzzleBoardViewModel {
         }
         let image = try await imageService.fetchImage(fromURL: url)
         withAnimation {
-            self.image = image 
+            self.image = image
         }
         splitImage()
-    }
-    
-    func shuffle() {
-        let shuffled = originalPieces.shuffled()
-        withAnimation {
-            /// Updates the current index of each piece to the new shuffled indices and updates the current pieces
-            currentPieces = shuffled.enumerated().map { (index, piece) in piece.setCurrentIndex(index) }
-        }
     }
     
     @MainActor
@@ -68,26 +60,19 @@ class PuzzleBoardViewModel {
         }
     }
     
-    // MARK: - Private
+    func shuffle() {
+        let shuffled = originalPieces.shuffled()
+        withAnimation {
+            /// Updates the current index of each piece to the new shuffled indices and updates the current pieces
+            currentPieces = shuffled.enumerated().map { (index, piece) in piece.setCurrentIndex(index) }
+        }
+    }
     
-    private func splitImage() {
+    func splitImage() {
         guard let image = self.image else {
             return
         }
-        let size = CGSize(width: image.size.width / CGFloat(kGridLength), height: image.size.height / CGFloat(kGridLength))
-        var images: [UIImage] = []
-        for y in 0..<kGridLength {
-            for x in 0..<kGridLength {
-                UIGraphicsBeginImageContext(size)
-                image.draw(at: CGPoint(x: -CGFloat(x) * size.width, y: -CGFloat(y) * size.height))
-                let tileImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                if let tileImage = tileImage {
-                    images.append(tileImage)
-                }
-            }
-        }
-        let pieces = images.enumerated().map { (index, image) in PuzzlePiece(image: image, index: index) }
+        let pieces = image.splitIntoPieces()
         withAnimation {
             originalPieces = pieces
             currentPieces = pieces

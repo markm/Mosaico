@@ -10,6 +10,7 @@
 		A06A782A2BA149ED009F1DE1 /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A78292BA149ED009F1DE1 /* PuzzlePiece.swift */; };
 		A06A782C2BA152AA009F1DE1 /* DragPieceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */; };
 		A06A782E2BA170DA009F1DE1 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */; };
+		A06A78342BA2C522009F1DE1 /* UIImage+Splitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A78332BA2C522009F1DE1 /* UIImage+Splitting.swift */; };
 		A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */; };
 		A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72CF2BA0FEED004CBC46 /* Errors.swift */; };
 		A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07F72D12BA0FF08004CBC46 /* Constants.swift */; };
@@ -54,6 +55,7 @@
 		A06A782B2BA152AA009F1DE1 /* DragPieceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragPieceDelegate.swift; sourceTree = "<group>"; };
 		A06A782D2BA170DA009F1DE1 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		A06A782F2BA25822009F1DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A06A78332BA2C522009F1DE1 /* UIImage+Splitting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Splitting.swift"; sourceTree = "<group>"; };
 		A07F72CD2BA0FE8F004CBC46 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		A07F72CF2BA0FEED004CBC46 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A07F72D12BA0FF08004CBC46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A06A78322BA2C4D0009F1DE1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A06A78332BA2C522009F1DE1 /* UIImage+Splitting.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A07F72DB2BA107A4004CBC46 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,10 +155,11 @@
 			isa = PBXGroup;
 			children = (
 				A06A782F2BA25822009F1DE1 /* Info.plist */,
-				A07F72DB2BA107A4004CBC46 /* ViewModels */,
 				A0EFB5422BA0ED22008C9572 /* Views */,
+				A07F72DB2BA107A4004CBC46 /* ViewModels */,
 				A0EFB5412BA0ED0C008C9572 /* Models */,
 				A0EFB53E2BA0ECF0008C9572 /* Networking */,
+				A06A78322BA2C4D0009F1DE1 /* Extensions */,
 				A0EFB5432BA0ED2E008C9572 /* App */,
 				A07F72DC2BA107CC004CBC46 /* Mocks */,
 				A0EFB5172BA0EBA8008C9572 /* Assets.xcassets */,
@@ -376,6 +387,7 @@
 				A07F72DA2BA1063C004CBC46 /* PuzzleBoardViewModel.swift in Sources */,
 				A07F72CE2BA0FE8F004CBC46 /* ImageService.swift in Sources */,
 				A07F72D02BA0FEED004CBC46 /* Errors.swift in Sources */,
+				A06A78342BA2C522009F1DE1 /* UIImage+Splitting.swift in Sources */,
 				A07F72D22BA0FF08004CBC46 /* Constants.swift in Sources */,
 				A06A782E2BA170DA009F1DE1 /* ButtonStyles.swift in Sources */,
 				A07F72DE2BA107F6004CBC46 /* MockImageService.swift in Sources */,
