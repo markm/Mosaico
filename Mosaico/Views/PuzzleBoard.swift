@@ -47,10 +47,7 @@ struct PuzzleBoard: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
                         HStack {
-                            Button(kNewGameButtonTitle) {
-                                viewModel.startOver()
-                            }
-                            .buttonStyle(VibrantButtonStyle())
+                            NewGameButton
                             Spacer()
                         }
                         .padding(.vertical)
@@ -86,8 +83,7 @@ struct PuzzleBoard: View {
                     Text(kMosaicoTitle)
                         .font(AppFonts.optima(ofSize: kTitleFontSize))
                         .foregroundColor(.white)
-                        .padding(.top)
-                        .padding(.bottom, kSmallPadding)
+                        .padding(.vertical)
                     
                     Text(kPuzzleDirections)
                         .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
@@ -108,11 +104,7 @@ struct PuzzleBoard: View {
                     }
                     
                     Spacer()
-                    
-                    Button(kNewGameButtonTitle) {
-                        viewModel.startOver()
-                    }
-                    .buttonStyle(VibrantButtonStyle())
+                    NewGameButton
                     
                     if let stats = stats.first {
                         Text("Completed Puzzles: \(stats.score)")
@@ -193,6 +185,19 @@ struct PuzzleBoard: View {
             }
             Spacer()
         }
+    }
+    
+    private var NewGameButton: some View {
+        Button(kNewGameButtonTitle) {
+            Task {
+                do {
+                    try await viewModel.startOver()
+                } catch {
+                    self.error = error as? LocalizedError
+                }
+            }
+        }
+        .buttonStyle(VibrantButtonStyle())
     }
 }
 
