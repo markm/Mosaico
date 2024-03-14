@@ -11,15 +11,14 @@ import Alamofire
 import AlamofireImage
 
 class MockImageService: ImageServiceProtocol {
-
-    @MainActor
+    
+    var image: UIImage?
+    var error: Error?
+    
     func fetchImage(fromURL url: URL) async throws -> UIImage {
-        /// Directly await the response of the image request
-        let response: DataResponse<UIImage, AFError> = await AF.request(url).serializingImage().response
-        /// Directly access the result's value, which is of type UIImage
-        guard let image = response.value else {
-            throw ImageError.failedToLoadImage
+        if let error = error {
+            throw error
         }
-        return image
+        return image ?? UIImage()
     }
 }
