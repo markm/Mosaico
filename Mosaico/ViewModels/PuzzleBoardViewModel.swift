@@ -44,11 +44,19 @@ class PuzzleBoardViewModel {
         guard let url = Endpoint.largeImage.url else {
             throw ImageError.invalidURL
         }
-        let image = try await imageService.fetchImage(fromURL: url)
-        withAnimation {
-            self.image = image
+        do {
+            let image = try await imageService.fetchImage(fromURL: url)
+            withAnimation {
+                self.image = image
+            }
+            splitImage()
+        } catch {
+            withAnimation {
+                self.image = UIImage(named: "defaultPuzzle")
+            }
+            splitImage()
+            throw error
         }
-        splitImage()
     }
     
     @MainActor
