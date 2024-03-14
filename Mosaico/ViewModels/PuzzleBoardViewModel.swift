@@ -44,12 +44,11 @@ class PuzzleBoardViewModel {
         guard let url = Endpoint.largeImage.url else {
             throw ImageError.invalidURL
         }
-        do {
-            self.image = try await imageService.fetchImage(fromURL: url)
-            self.splitImage()
-        } catch {
-            throw ImageError.failedToLoadImage
+        let image = try await imageService.fetchImage(fromURL: url)
+        withAnimation {
+            self.image = image 
         }
+        splitImage()
     }
     
     func shuffle() {
@@ -61,15 +60,11 @@ class PuzzleBoardViewModel {
     }
     
     @MainActor
-    func startOver() {
-        Task {
-            do {
-                try? await fetchImage()
-                withAnimation {
-                    isComplete = false
-                    gridSpacing = kGridSpacing
-                }
-            }
+    func startOver() async throws {
+        try await fetchImage()
+        withAnimation {
+            isComplete = false
+            gridSpacing = kGridSpacing
         }
     }
     
