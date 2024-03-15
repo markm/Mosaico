@@ -56,15 +56,15 @@ final class MosaicoTests: XCTestCase {
         // Given
         let puzzlePieces: [PuzzlePiece] = (1...9).map { PuzzlePiece(image: UIImage(), index: $0) }
         puzzleBoardViewModel.originalPieces = puzzlePieces
-        puzzleBoardViewModel.currentPieces = puzzlePieces
+        puzzleBoardViewModel.pieces = puzzlePieces
         
         // When
         puzzleBoardViewModel.shuffle()
         
         // Then
-        XCTAssertNotEqual(puzzleBoardViewModel.currentPieces.map { $0.id },
+        XCTAssertNotEqual(puzzleBoardViewModel.pieces.map { $0.id },
                           puzzleBoardViewModel.originalPieces.map { $0.id }, "Pieces should be shuffled")
-        XCTAssertTrue(puzzleBoardViewModel.currentPieces != puzzleBoardViewModel.originalPieces,
+        XCTAssertTrue(puzzleBoardViewModel.pieces != puzzleBoardViewModel.originalPieces,
                       "The currentPieces array should be in a different order after shuffling")
     }
     
@@ -78,7 +78,7 @@ final class MosaicoTests: XCTestCase {
             /// Postconditions: originalPieces and currentPieces should be populated
             XCTAssertFalse(self.puzzleBoardViewModel.originalPieces.isEmpty,
                            "originalPieces should be populated after splitting the image.")
-            XCTAssertFalse(self.puzzleBoardViewModel.currentPieces.isEmpty, 
+            XCTAssertFalse(self.puzzleBoardViewModel.pieces.isEmpty, 
                            "currentPieces should be populated after splitting the image.")
             
             /// Validate the number of pieces
