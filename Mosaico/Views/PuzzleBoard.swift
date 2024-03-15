@@ -198,6 +198,7 @@ struct PuzzleBoard: View {
             }
         }
         .buttonStyle(VibrantButtonStyle())
+        .accessibilityIdentifier("NewGameButton")
     }
 }
 
