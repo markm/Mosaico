@@ -14,14 +14,11 @@ class PuzzleBoardViewModel {
     
     var imageService: ImageServiceProtocol
     
-    var image: UIImage?
     var pieceDragging: PuzzlePiece?
     
     var gridSpacing = kGridSpacing
-    
     var isComplete: Bool = false
-    var currentPieces: [PuzzlePiece] = []
-    var originalPieces: [PuzzlePiece] = []
+    var pieces: [PuzzlePiece] = []
     
     var layout: [GridItem] {
         [
@@ -46,15 +43,12 @@ class PuzzleBoardViewModel {
         }
         do {
             let image = try await imageService.fetchImage(fromURL: url)
-            withAnimation {
-                self.image = image
-            }
-            splitImage()
+            splitImage(image)
         } catch {
-            withAnimation {
-                self.image = UIImage(named: "defaultPuzzle")
+            guard let image = UIImage(named: kDefaultImageName) else {
+                throw error
             }
-            splitImage()
+            splitImage(image)
             throw error
         }
     }
@@ -69,21 +63,19 @@ class PuzzleBoardViewModel {
     }
     
     func shuffle() {
-        let shuffled = originalPieces.shuffled()
+        let shuffled = pieces.shuffled()
         withAnimation {
-            /// Updates the current index of each piece to the new shuffled indices and updates the current pieces
-            currentPieces = shuffled.enumerated().map { (index, piece) in piece.setCurrentIndex(index) }
+            /// Update the index of each piece to reflect it's current position in the array
+            for (index, piece) in shuffled.enumerated() {
+                piece.currentIndex = index
+            }
+            pieces = shuffled
         }
     }
     
-    func splitImage() {
-        guard let image = self.image else {
-            return
-        }
-        let pieces = image.splitIntoPieces()
+    func splitImage(_ image: UIImage) {
         withAnimation {
-            originalPieces = pieces
-            currentPieces = pieces
+            self.pieces = image.splitIntoPieces()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + kSecondsBeforeShuffle) {
             self.shuffle()

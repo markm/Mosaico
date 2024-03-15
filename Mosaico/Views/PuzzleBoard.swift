@@ -53,7 +53,7 @@ struct PuzzleBoard: View {
                         .padding(.vertical)
                         
                         if let stats = stats.first {
-                            Text("Completed Puzzles: \(stats.score)")
+                            Text("\(kCompletedPuzzlesTitlePrompt) \(stats.score)")
                                 .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -70,7 +70,7 @@ struct PuzzleBoard: View {
                     .padding()
                     
                     VStack(spacing: 0) {
-                        if viewModel.currentPieces.isEmpty {
+                        if viewModel.pieces.isEmpty {
                             Progress
                         } else {
                             Grid
@@ -89,7 +89,7 @@ struct PuzzleBoard: View {
                         .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
                         .foregroundColor(.white)
                     
-                    if viewModel.currentPieces.isEmpty {
+                    if viewModel.pieces.isEmpty {
                         Progress
                     } else {
                         Grid
@@ -107,7 +107,7 @@ struct PuzzleBoard: View {
                     NewGameButton
                     
                     if let stats = stats.first {
-                        Text("Completed Puzzles: \(stats.score)")
+                        Text("\(kCompletedPuzzlesTitlePrompt) \(stats.score)")
                             .font(AppFonts.avenirNext(ofSize: kMediumFontSize))
                             .foregroundColor(.white)
                             .padding(.top)
@@ -153,14 +153,14 @@ struct PuzzleBoard: View {
     
     private var Grid: some View {
         LazyVGrid(columns: viewModel.layout, spacing: viewModel.gridSpacing) {
-            ForEach(viewModel.currentPieces) { piece in
+            ForEach(viewModel.pieces) { piece in
                 PuzzleTile(piece: piece)
                     .onDrag {
                         self.viewModel.pieceDragging = piece
                         return NSItemProvider()
                     }
                     .onDrop(of: [.text], delegate: DragPieceDelegate(originalPiece: piece,
-                                                                     pieces: $viewModel.currentPieces,
+                                                                     pieces: $viewModel.pieces,
                                                                      gridSpacing: $viewModel.gridSpacing,
                                                                      isComplete: $viewModel.isComplete,
                                                                      currentPiece: $viewModel.pieceDragging))
@@ -198,7 +198,7 @@ struct PuzzleBoard: View {
             }
         }
         .buttonStyle(VibrantButtonStyle())
-        .accessibilityIdentifier("NewGameButton")
+        .accessibilityIdentifier(kNewGameButtonAccessabilityLabel)
     }
 }
 

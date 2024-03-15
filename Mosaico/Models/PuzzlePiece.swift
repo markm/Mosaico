@@ -24,11 +24,6 @@ class PuzzlePiece {
         self.currentIndex = index
         self.originalIndex = index
     }
-    
-    func setCurrentIndex(_ index: Int) -> PuzzlePiece {
-        currentIndex = index
-        return self
-    }
 }
 
 extension PuzzlePiece: Reorderable {
