@@ -54,16 +54,9 @@ final class MosaicoTests: XCTestCase {
     
     func testShuffle() {
         // Given
-        puzzleBoardViewModel.originalPieces = [PuzzlePiece(image: UIImage(), index: 1),
-                                               PuzzlePiece(image: UIImage(), index: 2),
-                                               PuzzlePiece(image: UIImage(), index: 3),
-                                               PuzzlePiece(image: UIImage(), index: 4),
-                                               PuzzlePiece(image: UIImage(), index: 5),
-                                               PuzzlePiece(image: UIImage(), index: 6),
-                                               PuzzlePiece(image: UIImage(), index: 7),
-                                               PuzzlePiece(image: UIImage(), index: 8),
-                                               PuzzlePiece(image: UIImage(), index: 9)]
-        puzzleBoardViewModel.currentPieces = puzzleBoardViewModel.originalPieces
+        let puzzlePieces: [PuzzlePiece] = (1...9).map { PuzzlePiece(image: UIImage(), index: $0) }
+        puzzleBoardViewModel.originalPieces = puzzlePieces
+        puzzleBoardViewModel.currentPieces = puzzlePieces
         
         // When
         puzzleBoardViewModel.shuffle()
