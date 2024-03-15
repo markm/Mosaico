@@ -26,7 +26,7 @@ struct PuzzleBoard: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var stats: [GameStats]
     
-    /// Size classe
+    /// Size class
     @Environment(\.verticalSizeClass) var verticalSizeClass
 
     var body: some View {

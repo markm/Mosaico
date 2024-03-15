@@ -41,9 +41,13 @@ class DragPieceDelegate: DropDelegate {
                 return false
             }
             /// Gets the indices of the pieces in the array & update the current index of each piece
-            let fromIndex = pieces.firstIndex(of: currentPiece!)!
-            let toIndex = pieces.firstIndex(of: originalPiece)!
-            currentPiece?.currentIndex = toIndex
+            guard let currentPiece,
+                    let fromIndex = pieces.firstIndex(of: currentPiece),
+                    let toIndex = pieces.firstIndex(of: originalPiece) else {
+                return false
+            }
+            /// Updates the current index of the pieces
+            currentPiece.currentIndex = toIndex
             self.originalPiece.currentIndex = fromIndex
             /// Swaps the pieces in the array
             withAnimation {
@@ -53,7 +57,6 @@ class DragPieceDelegate: DropDelegate {
             /// Checks if the puzzle is complete
             let done = pieces.allSatisfy { $0.isHome }
             if done {
-                print("Puzzle is complete")
                 withAnimation {
                     gridSpacing = 0
                     isComplete = true

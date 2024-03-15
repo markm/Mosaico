@@ -25,7 +25,7 @@ final class MosaicoUITests: XCTestCase {
 
     func testNewGameButton() {
         // Given
-        let newGameButton = app.buttons[kNewGameButtonAccessabilityLabel]
+        let newGameButton = app.buttons["NewGameButton"]
     
         /// Simulate tap on the button
         newGameButton.tap()

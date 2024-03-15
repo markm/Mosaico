@@ -10,14 +10,15 @@ import XCTest
 
 final class MosaicoTests: XCTestCase {
     
+    var image: UIImage!
     var imageService: MockImageService!
     var puzzleBoardViewModel: PuzzleBoardViewModel!
 
     override func setUpWithError() throws {
+        image = UIImage(systemName: "photo")
         imageService = MockImageService()
-        imageService.image = UIImage(systemName: "photo")
+        imageService.image = image
         puzzleBoardViewModel = PuzzleBoardViewModel(imageService: imageService)
-        puzzleBoardViewModel.image = UIImage(systemName: "photo")
     }
 
     override func tearDownWithError() throws {
@@ -30,7 +31,7 @@ final class MosaicoTests: XCTestCase {
         do {
             try await puzzleBoardViewModel.fetchImage()
             // Then
-            XCTAssertNotNil(puzzleBoardViewModel.image)
+            XCTAssertFalse(puzzleBoardViewModel.pieces.isEmpty, "Array should not be empty")
         } catch {
             XCTFail("Fetching image should not have failed")
         }
@@ -55,34 +56,30 @@ final class MosaicoTests: XCTestCase {
     func testShuffle() {
         // Given
         let puzzlePieces: [PuzzlePiece] = (1...9).map { PuzzlePiece(image: UIImage(), index: $0) }
-        puzzleBoardViewModel.originalPieces = puzzlePieces
         puzzleBoardViewModel.pieces = puzzlePieces
         
         // When
         puzzleBoardViewModel.shuffle()
         
         // Then
-        XCTAssertNotEqual(puzzleBoardViewModel.pieces.map { $0.id },
-                          puzzleBoardViewModel.originalPieces.map { $0.id }, "Pieces should be shuffled")
-        XCTAssertTrue(puzzleBoardViewModel.pieces != puzzleBoardViewModel.originalPieces,
+        XCTAssertNotEqual(puzzlePieces.map { $0.id },
+                          puzzleBoardViewModel.pieces.map { $0.id }, "Pieces should be shuffled")
+        XCTAssertTrue(puzzlePieces != puzzleBoardViewModel.pieces,
                       "The currentPieces array should be in a different order after shuffling")
     }
     
     func testSplitImage() async {
-        /// Precondition: The ViewModel's image is set
-        XCTAssertNotNil(puzzleBoardViewModel.image, "Image must be set before splitting.")
-
-        puzzleBoardViewModel.splitImage()
+        puzzleBoardViewModel.splitImage(image)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + kSecondsBeforeShuffle) {
             /// Postconditions: originalPieces and currentPieces should be populated
-            XCTAssertFalse(self.puzzleBoardViewModel.originalPieces.isEmpty,
+            XCTAssertFalse(self.puzzleBoardViewModel.pieces.isEmpty,
                            "originalPieces should be populated after splitting the image.")
             XCTAssertFalse(self.puzzleBoardViewModel.pieces.isEmpty, 
                            "currentPieces should be populated after splitting the image.")
             
             /// Validate the number of pieces
-            XCTAssertEqual(self.puzzleBoardViewModel.originalPieces.count,
+            XCTAssertEqual(self.puzzleBoardViewModel.pieces.count,
                            kGridLength * kGridLength,
                            "There should be \(kGridLength * kGridLength) pieces after splitting the image.")
         }
