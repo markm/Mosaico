@@ -1,4 +1,4 @@
-iOS Project for Funambol
+iOS Project for Funambol Application
 
 Libraries: SwiftUI, Alamofire, AlamofireImage, AlertToast
 
